@@ -1,12 +1,8 @@
 # Health Monitor IoT Project
 
-## Project Overview
+## Project Description
 
-This project is an IoT-based Health Monitoring System developed using ESP32 and Arduino IoT Cloud.
-
-## Authors
-
-Developed as an IoT Health Monitoring Project using ESP32 and Arduino IoT Cloud.
+This project is an IoT-based health monitoring system developed using ESP32 and Arduino IoT Cloud.
 
 The system measures:
 
@@ -14,16 +10,13 @@ The system measures:
 - Blood Oxygen Level (SpO2)
 - Body Temperature
 
-Measured data is displayed in real-time on:
+The collected data is displayed on:
 
 - OLED Display
 - Arduino IoT Cloud Dashboard
-- Mobile Application
+- Arduino IoT Cloud Remote Mobile Application
 
-When abnormal conditions are detected, the system:
-
-- Activates a buzzer alarm
-- Sends push notifications through Arduino IoT Cloud
+If abnormal conditions are detected, the system activates a buzzer alarm and sends a mobile notification through Arduino IoT Cloud.
 
 ## Hardware Components
 
@@ -38,7 +31,7 @@ When abnormal conditions are detected, the system:
 
 ### Output Devices
 
-- 0.96" OLED Display (SSD1306)
+- SSD1306 OLED Display
 - Active Buzzer
 
 ### Additional Components
@@ -47,49 +40,21 @@ When abnormal conditions are detected, the system:
 - Jumper Wires
 - USB Power Supply
 
-## Features
+## System Features
 
-### Real-Time Monitoring
-
-The system continuously monitors:
-
-- Heart Rate (BPM)
-- Blood Oxygen Level (SpO2)
-- Body Temperature
-
-### OLED Display
-
-Live sensor data is displayed on the OLED screen.
-
-### Arduino IoT Cloud Integration
-
-Sensor data is sent to Arduino IoT Cloud for remote monitoring.
-
-### Mobile Monitoring
-
-Data can be monitored using:
-
-- Arduino IoT Cloud Web Dashboard
-- Arduino IoT Cloud Remote Mobile Application
-
-### Alarm System
-
-The buzzer activates when:
-
-- BPM exceeds threshold
-- Body temperature exceeds threshold
-
-### Mobile Notifications
-
-Push notifications are sent to the mobile application when a critical condition is detected.
-
-### Automatic Sensor Recovery
-
-The system automatically resets the MAX30100 sensor if communication is lost.
+- Real-time heart rate monitoring
+- Real-time body temperature monitoring
+- SpO2 monitoring
+- OLED live data display
+- Arduino IoT Cloud integration
+- Mobile monitoring support
+- Buzzer warning system
+- Push notification support
+- Automatic MAX30100 sensor reset mechanism
 
 ## Pin Connections
 
-### MAX30100
+### MAX30100 Connections
 
 | MAX30100 | ESP32 |
 | --- | --- |
@@ -98,7 +63,7 @@ The system automatically resets the MAX30100 sensor if communication is lost.
 | SDA | GPIO 21 |
 | SCL | GPIO 22 |
 
-### MLX90614
+### MLX90614 Connections
 
 | MLX90614 | ESP32 |
 | --- | --- |
@@ -107,7 +72,7 @@ The system automatically resets the MAX30100 sensor if communication is lost.
 | SDA | GPIO 21 |
 | SCL | GPIO 22 |
 
-### OLED SSD1306
+### OLED Connections
 
 | OLED | ESP32 |
 | --- | --- |
@@ -116,7 +81,7 @@ The system automatically resets the MAX30100 sensor if communication is lost.
 | SDA | GPIO 21 |
 | SCL | GPIO 22 |
 
-### Buzzer
+### Buzzer Connections
 
 | Buzzer | ESP32 |
 | --- | --- |
@@ -125,7 +90,7 @@ The system automatically resets the MAX30100 sensor if communication is lost.
 
 ## Arduino IoT Cloud Variables
 
-| Variable | Type | Permission |
+| Variable Name | Type | Permission |
 | --- | --- | --- |
 | bodyTemp | float | Read Only |
 | bpm | float | Read Only |
@@ -135,16 +100,17 @@ The system automatically resets the MAX30100 sensor if communication is lost.
 
 ## System Workflow
 
-1. ESP32 initializes sensors and OLED display.
-2. MAX30100 continuously measures BPM and SpO2.
+1. ESP32 initializes all sensors and OLED display.
+2. MAX30100 measures BPM and SpO2 values.
 3. MLX90614 measures body temperature.
-4. Data is displayed on OLED.
-5. Sensor values are uploaded to Arduino IoT Cloud.
-6. If threshold values are exceeded:
+4. Sensor data is displayed on the OLED screen.
+5. Data is uploaded to Arduino IoT Cloud.
+6. The mobile application receives live sensor data.
+7. If threshold values are exceeded:
    - riskStatus becomes ALERT
-   - buzzer activates
-   - mobile notification is triggered
-7. If MAX30100 stops responding, the system automatically resets the sensor.
+   - buzzer alarm activates
+   - push notification is sent to the mobile device
+8. If the MAX30100 sensor stops responding, the system automatically resets the sensor.
 
 ## Threshold Values
 
@@ -178,25 +144,20 @@ Notification type:
 
 ## Known Issue
 
-The MAX30100 sensor may not provide fully stable heart rate measurements when used together with ESP32 WiFi and Arduino IoT Cloud. During testing, occasional communication interruptions and unstable BPM readings were observed. To reduce this issue, automatic sensor reset and I2C stabilization mechanisms were implemented in the software.
+The MAX30100 sensor may not provide fully stable heart rate measurements when used together with ESP32 WiFi and Arduino IoT Cloud. During testing, occasional communication interruptions and unstable BPM readings were observed. To improve stability, automatic sensor reset and I2C stabilization mechanisms were implemented in the software.
 
-## Challenges Faced
+## Project Outcome
 
-During development:
+The project successfully demonstrates:
 
-- MAX30100 instability with WiFi connection was observed.
-- ESP32 occasionally lost communication with the sensor.
-- Automatic sensor reset logic was implemented to improve stability.
-- I2C communication speed was reduced for more reliable operation.
+- Real-time health monitoring
+- Cloud-based IoT communication
+- Mobile device integration
+- Alarm and notification mechanisms
+- Sensor data visualization using OLED display
 
-## Future Improvements
+## Authors
 
-Possible future upgrades:
-
-- Replace MAX30100 with MAX30102/MAX30105 for higher stability
-- Add battery support
-- Add ECG sensor
-- Store historical health data
-- Improve notification system
+Developed as an IoT Health Monitoring System project using ESP32 and Arduino IoT Cloud.
 
 DEVREYI BOZDUGUM ICIN RESIM EKLEYEMEDIM HOCAM KUSURA BAKMAYIN
