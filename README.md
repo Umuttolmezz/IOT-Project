@@ -198,3 +198,5 @@ Possible future upgrades:
 - Add ECG sensor
 - Store historical health data
 - Improve notification system
+
+DEVREYI BOZDUGUM ICIN RESIM EKLEYEMEDIM HOCAM KUSURA BAKMAYIN
